@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+    <!-- Background with rounded corners -->
+    <rect x="0" y="0" width="64" height="64" fill="#4A90E2" rx="12"/>
+    
+    <!-- File (document) icon -->
+    <path d="M16 14 H44 L50 20 V46 H16 Z" fill="#fff"/>
+    <!-- Folded corner effect -->
+    <path d="M44 14 V20 H50" fill="#e6e6e6"/>
+    
+    <!-- Clock badge overlay in the lower right corner of the file -->
+    <circle cx="42" cy="42" r="10" fill="#4A90E2" stroke="#fff" stroke-width="2"/>
+    <!-- Clock hands -->
+    <line x1="42" y1="42" x2="42" y2="36" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+    <line x1="42" y1="42" x2="47" y2="42" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+  

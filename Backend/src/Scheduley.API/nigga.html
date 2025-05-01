@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login</title>
+  </head>
+  <body>
+    <button id="googleLogin">Sign in with Google</button>
+
+    <script>
+      document.getElementById("googleLogin").addEventListener("click", () => {
+        const clientId =
+          "645021426222-25q3q7vl146d7p5admtru88fevppf026.apps.googleusercontent.com";
+        const redirectUri = "http://localhost:5500/api/v1/auth/signin-google";
+        const scope = "openid email profile";
+        const state = crypto.randomUUID(); // Optional: CSRF protection
+
+        const url =
+          `https://accounts.google.com/o/oauth2/v2/auth` +
+          `?response_type=code&client_id=${clientId}` +
+          `&redirect_uri=${encodeURIComponent(redirectUri)}` +
+          `&scope=${encodeURIComponent(scope)}` +
+          `&state=${state}`;
+
+        window.location.href = url;
+      });
+    </script>
+  </body>
+</html>

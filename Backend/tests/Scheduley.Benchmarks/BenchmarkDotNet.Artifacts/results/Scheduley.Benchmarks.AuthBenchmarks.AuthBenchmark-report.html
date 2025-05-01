@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>BenchmarkRun-joined-2025-04-15-22-36-01</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.14.0, Windows 11 (10.0.22631.5189/23H2/2023Update/SunValley3)
+Intel Core i7-8550U CPU 1.80GHz (Kaby Lake R), 1 CPU, 8 logical and 4 physical cores
+.NET SDK 8.0.400
+  [Host]   : .NET 8.0.10 (8.0.1024.46610), X64 RyuJIT AVX2
+  .NET 8.0 : .NET 8.0.10 (8.0.1024.46610), X64 RyuJIT AVX2
+</code></pre>
+<pre><code>Job=.NET 8.0  Runtime=.NET 8.0  
+</code></pre>
+
+<table>
+<thead><tr><th>Method                 </th><th>Mean  </th><th>Error</th><th>StdDev</th><th>Gen0</th><th>Gen1</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>&#39;First request - cold cache&#39;</td><td>1,945.1 &mu;s</td><td>118.39 &mu;s</td><td>347.22 &mu;s</td><td>31.2500</td><td>7.8125</td><td>140.65 KB</td>
+</tr><tr><td>&#39;Second request - warm cache&#39;</td><td>519.0 &mu;s</td><td>32.22 &mu;s</td><td>91.92 &mu;s</td><td>11.7188</td><td>1.9531</td><td>52.69 KB</td>
+</tr><tr><td>&#39;Multiple requests&#39;</td><td>7,215.3 &mu;s</td><td>489.70 &mu;s</td><td>1,436.20 &mu;s</td><td>140.6250</td><td>-</td><td>608.36 KB</td>
+</tr><tr><td>ListUserFiles</td><td>455,363.9 &mu;s</td><td>9,037.32 &mu;s</td><td>9,280.66 &mu;s</td><td>-</td><td>-</td><td>161.81 KB</td>
+</tr></tbody></table>
+</body>
+</html>

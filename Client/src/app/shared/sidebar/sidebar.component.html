@@ -1,0 +1,120 @@
+<!-- src/app/sidebar/sidebar.component.html -->
+
+<!-- ─── NAVBAR ─────────────────────────────────────────────────────────── -->
+<header
+  class="fixed top-0 left-0 w-full h-16 bg-[#4080ff] shadow flex items-center px-6 z-20 text-white"
+>
+  <!-- Left: menu button -->
+  <div class="w-8">
+    <button
+      (click)="toggle()"
+      class="p-2 rounded-lg bg-white text-[#4080ff] shadow focus:outline-none hover:bg-[#e0e0ff] transition-colors duration-200 hover:cursor-pointer"
+      aria-label="Toggle sidebar"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"
+        />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Spacer -->
+  <div class="flex-1"></div>
+
+  <!-- Right: user avatar + name -->
+  <div class="flex flex-col items-center mt-2">
+    <div class="w-7 h-7 rounded-full bg-white flex items-center justify-center">
+      <i class="fas fa-user text-[#4080ff] text-l"></i>
+    </div>
+
+    <span class="mt-1 text-sm font-medium text-white">
+      {{ username }}
+    </span>
+  </div>
+</header>
+
+<!-- ─── SIDEBAR ────────────────────────────────────────────────────────── -->
+<aside
+  class="fixed top-16 /* sit just below the 4rem‑tall header */ bottom-0 left-0 w-64 bg-white shadow-xl p-6 transform transition-transform duration-300 flex flex-col"
+  [class.translate-x-0]="isOpenSignal()"
+  [class.-translate-x-full]="!isOpenSignal()"
+>
+  <!-- close button in sidebar header -->
+  <div class="flex items-center justify-between mb-6">
+    <h1 class="text-2xl font-bold text-[#4080ff]">Scheduley</h1>
+  </div>
+
+  <!-- nav links -->
+  <nav class="flex flex-col flex-1 pt-4 gap-6">
+    <!-- Home -->
+    <a
+      routerLink="/"
+      routerLinkActive="bg-blue-50 text-[#4080ff] border-l-4 border-[#4080ff]"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="flex items-center gap-3 p-3 text-base font-medium text-gray-700 hover:bg-gray-50 rounded-r-lg transition-colors"
+    >
+      <i class="fas fa-house-chimney text-lg"></i>
+      Home
+    </a>
+    @if(username!=null){
+
+    <!-- Chat -->
+    <a
+      routerLink="/chat"
+      routerLinkActive="bg-blue-50 text-[#4080ff] border-l-4 border-[#4080ff]"
+      class="flex items-center gap-3 p-3 text-base font-medium text-gray-700 hover:bg-gray-50 rounded-r-lg transition-colors"
+    >
+      <i class="fas fa-comments text-lg"></i>
+      Chat
+    </a>
+
+    <!-- Storage -->
+    <a
+      routerLink="/storage"
+      routerLinkActive="bg-blue-50 text-[#4080ff] border-l-4 border-[#4080ff]"
+      class="flex items-center gap-3 p-3 text-base font-medium text-gray-700 hover:bg-gray-50 rounded-r-lg transition-colors"
+    >
+      <i class="fas fa-database text-lg"></i>
+      Storage
+    </a>
+
+    <!-- Profile -->
+    <a
+      routerLink="/profile"
+      routerLinkActive="bg-blue-50 text-[#4080ff] border-l-4 border-[#4080ff]"
+      class="flex items-center gap-3 p-3 text-base font-medium text-gray-700 hover:bg-gray-50 rounded-r-lg transition-colors"
+    >
+      <i class="fas fa-user text-lg"></i>
+      Profile
+    </a>
+    }
+  </nav>
+
+  <!-- logout (always pinned to bottom) -->
+  @if(username == null){
+  <button
+    (click)="onLogin()"
+    class="mt-auto flex items-center gap-3 p-3 text-base font-medium text-blue-600 hover:bg-red-50 rounded-lg transition-colors cursor-pointer"
+  >
+    <i class="fas fa-arrow-right-from-bracket text-lg"></i>
+    Login
+  </button>
+  } @else{
+  <button
+    (click)="onLogout()"
+    class="mt-auto flex items-center gap-3 p-3 text-base font-medium text-red-600 hover:bg-red-50 rounded-lg transition-colors cursor-pointer"
+  >
+    <i class="fas fa-arrow-right-from-bracket text-lg"></i>
+    Logout
+  </button>
+  }
+</aside>
